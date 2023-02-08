@@ -5,6 +5,11 @@
 
 > 在启动了Clash的情况下，requests发送请求会报错，于是稍微封装了下
 
+## Install
+```
+pip install requestsp
+```
+
 ## Example
 ```python
 import requestsp as requests
