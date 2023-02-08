@@ -1,4 +1,4 @@
-import requestsp as requests
+import requestspr as requests
 
 
 def google_search(text: str):

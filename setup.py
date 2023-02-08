@@ -6,12 +6,15 @@ with open('README.md', encoding='utf-8') as f:
     LONG_DESCRIPTION = f.read()
 
 setup(
-    name='requestsp',  # package name
+    name='requestspr',  # package name
     version=VERSION,  # package version
     description='在启动了Clash的情况下，requests发送请求会报错，于是稍微封装了下',  # package description
     long_description=LONG_DESCRIPTION,
     long_description_content_type='text/markdown',
     license='MIT',
+    install_requires=[
+        'requests',
+    ],
     packages=find_packages(),
     zip_safe=False,
     classifiers=[
