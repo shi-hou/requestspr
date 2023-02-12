@@ -1,19 +1,29 @@
-import requestspr as requests
+from requestspr import Requests, ProxyMode
 
 
-def google_search(text: str):
-    """谷歌搜索"""
-    return requests.get(f'https://www.google.com/search?q={text}')
+def twitter():
+    """请求推特页面"""
+    try:
+        return requests.get('https://twitter.com/')
+    except Exception as e:
+        return e
 
 
 if __name__ == '__main__':
-    # 默认使用系统代理, 请求成功
-    print(google_search('test'))
+    # 在开着Clash的情况下
 
-    # 不使用系统代理，请求失败
-    # requests.set_proxy_mode(requests.ProxyMode.NoProxy)
-    # print(google_search('test'))
+    requests = Requests()
+
+    # 获取代理信息
+    print(requests.get_proxies())
+
+    # 默认使用系统代理, 请求成功
+    print(twitter())
+
+    # 不使用系统代理，请求超时
+    requests.set_proxy_mode(ProxyMode.NoProxy)
+    print(twitter())
 
     # 自行设置代理
-    # requests.set_proxy_mode(requests.ProxyMode.Static, {'https': '127.0.0.1:7890'})
-    # print(google_search('test'))
+    requests.set_proxy_mode(ProxyMode.Static, {'https': '127.0.0.1:7890'})
+    print(twitter())
